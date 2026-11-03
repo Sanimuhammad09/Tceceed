@@ -1,0 +1,11 @@
+# Build output
+dist
+dist-ssr
+
+# Vite cache
+node_modules/.vite
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.local
