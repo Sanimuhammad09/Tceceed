@@ -17,6 +17,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 import { NEWS_DISPATCHES, NewsArticle } from '../data/portalData';
 
 export const NewsPage: React.FC = () => {
@@ -40,6 +41,18 @@ export const NewsPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="News, Research Publications & Academic Dispatches | TCECEED"
+        description="Read recent breakthroughs, peer-reviewed publications, technical workshop milestones, and official dispatches from the TETFund Centre of Excellence for Clean Energy."
+        canonicalPath="/news"
+        keywords="TCECEED News, Renewable Energy Research Papers, Clean Energy Workshop Milestones, Federal Polytechnic Nasarawa News, Biogas Research Publications"
+        ogImage="/assets/images/workshop_fabrication_hall.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'News & Publications', path: '/news' },
+        ]}
+      />
+
       {/* SECTION 1: HEADER & LIVE FILTER TOOLBAR */}
       <section className="w-full bg-surface-container-low py-10 lg:py-14 border-b border-surface-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

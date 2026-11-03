@@ -21,6 +21,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 
 export const InternshipPage: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<'A' | 'B'>('B');
@@ -45,6 +46,18 @@ export const InternshipPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="6-Month Clean Energy & Solar PV Internship Programme | Apply Now"
+        description="Apply for the accredited 6-Month Clean Energy & Solar PV Technology Practical Internship at TCECEED, Federal Polytechnic Nasarawa. Gain NABTEB-aligned competence certification and hands-on laboratory experience."
+        canonicalPath="/internship"
+        keywords="Solar PV Internship Nigeria, Clean Energy Training Nasarawa, NABTEB Solar Certification, Technical Apprenticeship, Solar Inverter Installation Course, Green Energy Skills"
+        ogImage="/assets/images/graduates_alumni_group.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Career & Internship Programme', path: '/internship' },
+        ]}
+      />
+
       {/* Top Banner / Editorial Intro */}
       <section className="relative overflow-hidden bg-surface-container-low py-10 lg:py-14 border-b border-surface-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

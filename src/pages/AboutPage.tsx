@@ -22,6 +22,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 import { PORTAL_LOGOS } from '../data/portalData';
 
 export const AboutPage: React.FC = () => {
@@ -29,6 +30,18 @@ export const AboutPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="About TCECEED | Institutional Mandate & Strategic Vision"
+        description="Explore the statutory charter, institutional goals, and visionary leadership of the TETFund Centre of Excellence for Clean Energy and Entrepreneurship Development at Federal Polytechnic Nasarawa."
+        canonicalPath="/about"
+        keywords="About TCECEED, TETFund Mandate, Clean Energy Vision, Federal Polytechnic Nasarawa Charter, Renewable Energy Policy Nigeria, Clean Tech Incubation"
+        ogImage="/assets/images/workshop_cohort_training.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'About TCECEED', path: '/about' },
+        ]}
+      />
+
       {/* Top Academic Context Header & Breadcrumbs */}
       <section className="w-full bg-surface-container-low py-10 lg:py-14 border-b border-surface-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

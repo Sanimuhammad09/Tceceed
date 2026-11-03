@@ -29,6 +29,7 @@ import {
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 
 export const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -47,6 +48,14 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col">
+      <SEOHead
+        title="TCECEED | Clean Energy Centre of Excellence - Federal Polytechnic Nasarawa"
+        description="Official portal of the TETFund Centre of Excellence for Clean Energy and Entrepreneurship Development (TCECEED). Pioneer renewable research, solar PV technical certifications, and clean-tech incubation."
+        canonicalPath="/"
+        keywords="TCECEED, TETFund Centre of Excellence, Clean Energy Nigeria, Federal Polytechnic Nasarawa, Solar PV Training, Biogas Energy Nigeria, Renewable Incubation"
+        ogImage="/assets/images/workshop_cohort_training.png"
+      />
+
       {/* SECTION 1: HERO SLIDER WITH FRAMER MOTION */}
       <section
         className="relative w-full overflow-hidden bg-primary text-white min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex items-center"

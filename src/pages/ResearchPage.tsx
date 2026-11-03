@@ -21,6 +21,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 import { RESEARCH_STREAMS } from '../data/portalData';
 
 export const ResearchPage: React.FC = () => {
@@ -43,6 +44,17 @@ export const ResearchPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="Research & Innovation | Translational Clean Energy Streams"
+        description="Explore TCECEED's cutting-edge renewable research streams: Solar Photovoltaics, Biomass & Anaerobic Biogas Digestion, Low-Speed Wind Turbines, and Green Hydrogen Incubation."
+        canonicalPath="/research"
+        keywords="Renewable Energy Research Nigeria, Solar PV Efficiency, Anaerobic Biogas Nasarawa, Wind Turbine Fabrication, Green Hydrogen Research, Clean Energy Prototypes"
+        ogImage="/assets/images/solar_panels_rig.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Research & Projects', path: '/research' },
+        ]}
+      />
       {/* Top Academic Context Header & Impact Stats */}
       <section className="w-full bg-surface-container-low py-10 lg:py-14 border-b border-surface-container overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

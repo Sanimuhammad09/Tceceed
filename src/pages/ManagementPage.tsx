@@ -20,6 +20,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 import { LEADERSHIP_ROSTER, PORTAL_LOGOS } from '../data/portalData';
 
 export const ManagementPage: React.FC = () => {
@@ -27,6 +28,18 @@ export const ManagementPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="Governance & Management Structure | TCECEED Leadership Roster"
+        description="Meet the governing board, Centre Director, research stream leads, and academic advisory committee steering the TETFund Centre of Excellence for Clean Energy at Federal Polytechnic Nasarawa."
+        canonicalPath="/management"
+        keywords="TCECEED Management, Centre Director, Academic Advisory Board, Federal Polytechnic Nasarawa Leadership, TETFund Committee, Research Leads"
+        ogImage="/assets/images/director_accord_signing.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Management Structure & Governance', path: '/management' },
+        ]}
+      />
+
       {/* Top Governance Hero & Context Strip */}
       <section className="relative w-full bg-surface-container-low py-10 lg:py-14 border-b border-surface-container overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

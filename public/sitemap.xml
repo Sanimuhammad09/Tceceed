@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://tceceed.edu.ng/</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://tceceed.edu.ng/assets/images/workshop_cohort_training.png</image:loc>
+      <image:title>TCECEED Clean Energy Cohort and Practical Workshop</image:title>
+      <image:caption>TETFund Centre of Excellence for Clean Energy and Entrepreneurship Development, Federal Polytechnic Nasarawa</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About TCECEED -->
+  <url>
+    <loc>https://tceceed.edu.ng/about</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Research & Projects -->
+  <url>
+    <loc>https://tceceed.edu.ng/research</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tceceed.edu.ng/assets/images/solar_panels_rig.png</image:loc>
+      <image:title>TCECEED Solar PV Rig and Laboratory Infrastructure</image:title>
+    </image:image>
+  </url>
+
+  <!-- Career & Internship Programme -->
+  <url>
+    <loc>https://tceceed.edu.ng/internship</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://tceceed.edu.ng/assets/images/graduates_alumni_group.png</image:loc>
+      <image:title>Graduates of 6-Month Clean Energy &amp; Solar PV Technology Cohort</image:title>
+    </image:image>
+  </url>
+
+  <!-- Governance & Management Structure -->
+  <url>
+    <loc>https://tceceed.edu.ng/management</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- News & Publications -->
+  <url>
+    <loc>https://tceceed.edu.ng/news</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Contact Us & Secretariat -->
+  <url>
+    <loc>https://tceceed.edu.ng/contact</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>

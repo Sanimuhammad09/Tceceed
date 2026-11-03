@@ -17,6 +17,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { TypewriterText } from '../components/TypewriterText';
+import { SEOHead } from '../components/SEOHead';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -36,6 +37,18 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col pt-4">
+      <SEOHead
+        title="Contact Secretariat & Innovation Labs | TCECEED"
+        description="Contact the TETFund Centre of Excellence for Clean Energy and Entrepreneurship Development at Federal Polytechnic Nasarawa. Connect via WhatsApp, telephone, email, or institutional visit."
+        canonicalPath="/contact"
+        keywords="Contact TCECEED, Federal Polytechnic Nasarawa Clean Energy, WhatsApp Help Desk, Clean Tech Partnerships Nigeria, Solar Training Enquiries"
+        ogImage="/assets/images/workshop_cohort_training.png"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact Secretariat', path: '/contact' },
+        ]}
+      />
+
       {/* Top Academic Context Band */}
       <section className="w-full bg-surface-container-low py-10 lg:py-14 border-b border-surface-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,0 +1,19 @@
+# Robots.txt for TCECEED Clean Energy Portal
+# https://tceceed.edu.ng
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /research
+Allow: /internship
+Allow: /management
+Allow: /news
+Allow: /contact
+Allow: /assets/
+
+# Disallow build and hidden configuration files
+Disallow: /node_modules/
+Disallow: /*.json$
+
+# Sitemaps
+Sitemap: https://tceceed.edu.ng/sitemap.xml
