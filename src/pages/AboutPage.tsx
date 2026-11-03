@@ -21,6 +21,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { TypewriterText } from '../components/TypewriterText';
 import { PORTAL_LOGOS } from '../data/portalData';
 
 export const AboutPage: React.FC = () => {
@@ -40,7 +41,12 @@ export const AboutPage: React.FC = () => {
                 <span>Institutional Charter &amp; Strategic Mandate</span>
               </div>
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-on-surface leading-tight">
-                Driving Sustainable Renewable Energy &amp; Entrepreneurship in Nigeria
+                <TypewriterText
+                  text="Driving Sustainable Renewable Energy & Entrepreneurship in Nigeria"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-primary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
               <p className="text-sm sm:text-base text-on-surface-variant mt-3 leading-relaxed">
                 Established under the statutory authority of TETFund and the Federal Ministry of Education

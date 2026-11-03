@@ -28,6 +28,7 @@ import {
 } from '../data/portalData';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { TypewriterText } from '../components/TypewriterText';
 
 export const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -88,15 +89,20 @@ export const HomePage: React.FC = () => {
               </span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline with Typewriter Format */}
             <motion.h1
               key={`title-${currentSlide}`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5 text-white"
+              transition={{ duration: 0.4 }}
+              className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5 text-white min-h-[2.4em] sm:min-h-[2.1em]"
             >
-              {HERO_SLIDES[currentSlide].title}
+              <TypewriterText
+                text={HERO_SLIDES[currentSlide].title}
+                speed={30}
+                delay={200}
+                cursorClassName="w-[3px] h-[0.88em] bg-secondary-fixed ml-1 inline-block align-baseline animate-pulse shadow-[0_0_8px_#6ffbbe]"
+              />
             </motion.h1>
 
             {/* Subtitle / Description */}

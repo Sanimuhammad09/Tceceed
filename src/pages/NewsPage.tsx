@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { TypewriterText } from '../components/TypewriterText';
 import { NEWS_DISPATCHES, NewsArticle } from '../data/portalData';
 
 export const NewsPage: React.FC = () => {
@@ -51,7 +52,12 @@ export const NewsPage: React.FC = () => {
                 <span>Centre Dispatches &amp; Academic Repository</span>
               </div>
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight leading-tight">
-                News, Research Publications &amp; Centre Dispatches
+                <TypewriterText
+                  text="News, Research Publications & Centre Dispatches"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-primary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
               <p className="text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
                 Stay informed on breakthrough clean energy research, community workshop programmes,

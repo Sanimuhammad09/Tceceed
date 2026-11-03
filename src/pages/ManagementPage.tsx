@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { TypewriterText } from '../components/TypewriterText';
 import { LEADERSHIP_ROSTER, PORTAL_LOGOS } from '../data/portalData';
 
 export const ManagementPage: React.FC = () => {
@@ -44,7 +45,12 @@ export const ManagementPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
             <div className="lg:col-span-8">
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-primary mb-3">
-                TCECEED Governance &amp; Administrative Structure
+                <TypewriterText
+                  text="TCECEED Governance & Administrative Structure"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-secondary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
               <p className="text-sm sm:text-base text-on-surface-variant max-w-3xl leading-relaxed">
                 Established under the mandate of the Tertiary Education Trust Fund (TETFund) and The

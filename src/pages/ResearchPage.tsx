@@ -20,6 +20,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { TypewriterText } from '../components/TypewriterText';
 import { RESEARCH_STREAMS } from '../data/portalData';
 
 export const ResearchPage: React.FC = () => {
@@ -61,8 +62,12 @@ export const ResearchPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-8">
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight leading-tight mb-4">
-                Translational Clean Energy <br className="hidden sm:inline" />
-                <span className="text-primary">Research &amp; Innovation</span> Projects
+                <TypewriterText
+                  text="Translational Clean Energy Research & Innovation Projects"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-secondary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
               <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl leading-relaxed mb-6">
                 Engineering sustainable, decentralized, and commercially viable renewable energy

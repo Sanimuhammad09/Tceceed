@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { TypewriterText } from '../components/TypewriterText';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +48,12 @@ export const ContactPage: React.FC = () => {
                 <span>Institutional Engagement Portal</span>
               </div>
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-primary tracking-tight leading-tight">
-                Contact the TETFund Centre of Excellence for Clean Energy
+                <TypewriterText
+                  text="Contact the TETFund Centre of Excellence for Clean Energy"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-secondary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
               <p className="text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
                 Connect with our research secretariat, technical innovation laboratories, and academic

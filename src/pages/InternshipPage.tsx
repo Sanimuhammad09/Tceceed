@@ -20,6 +20,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
+import { TypewriterText } from '../components/TypewriterText';
 
 export const InternshipPage: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<'A' | 'B'>('B');
@@ -57,7 +58,12 @@ export const InternshipPage: React.FC = () => {
               </div>
 
               <h1 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-primary tracking-tight leading-tight">
-                TCECEED Career Development &amp; Technical Internship Programme
+                <TypewriterText
+                  text="TCECEED Career Development & Technical Internship Programme"
+                  speed={28}
+                  delay={120}
+                  cursorClassName="w-[3px] h-[0.85em] bg-secondary ml-1 inline-block align-baseline animate-pulse"
+                />
               </h1>
 
               <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl leading-relaxed">
