@@ -9,6 +9,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { WhatsAppWidget } from '../components/WhatsAppWidget';
 import { HomePage } from '../pages/HomePage';
 import { AboutPage } from '../pages/AboutPage';
 import { ResearchPage } from '../pages/ResearchPage';
@@ -38,6 +39,8 @@ const RootComponent: React.FC = () => {
         </AnimatePresence>
       </main>
       <Footer />
+      {/* Floating WhatsApp Action Widget at Right Corner */}
+      <WhatsAppWidget />
     </div>
   );
 };

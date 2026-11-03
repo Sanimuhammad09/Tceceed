@@ -471,3 +471,17 @@ export const NEWS_DISPATCHES: NewsArticle[] = [
   },
 ];
 
+export const PORTAL_CONTACT = {
+  institution: 'TETFund Centre of Excellence for Clean Energy and Entrepreneurship Development (TCECEED)',
+  hostInstitution: 'The Federal Polytechnic Nasarawa',
+  address: 'Along Nasarawa-Keffi Road, P.M.B. 01, Nasarawa State, Nigeria',
+  email: 'tceceedinfo2024@gmail.com',
+  phoneNumbers: ['+234 803 636 3090', '+234 803 397 2612'],
+  whatsappNumbers: [
+    { label: '+234 803 636 3090', link: 'https://wa.me/2348036363090' },
+    { label: '+234 803 397 2612', link: 'https://wa.me/2348033972612' },
+  ],
+  workingHours: 'Monday - Friday: 8:00 AM - 5:00 PM (WAT)',
+};
+
+
