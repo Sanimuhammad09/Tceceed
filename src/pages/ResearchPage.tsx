@@ -22,12 +22,13 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
 import { SEOHead } from '../components/SEOHead';
+import { WhatsAppIcon } from '../components/WhatsAppWidget';
 import { RESEARCH_STREAMS } from '../data/portalData';
 
 export const ResearchPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'solar' | 'biogas' | 'wind' | 'hybrid'>('all');
   const [conceptNoteModalOpen, setConceptNoteModalOpen] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submittedTicket, setSubmittedTicket] = useState<string | null>(null);
 
   const filteredStreams = activeCategory === 'all'
     ? RESEARCH_STREAMS
@@ -35,11 +36,8 @@ export const ResearchPage: React.FC = () => {
 
   const handleConceptSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setConceptNoteModalOpen(false);
-    }, 2500);
+    const ticket = `TCECEED-RND-${Math.floor(1000 + Math.random() * 9000)}`;
+    setSubmittedTicket(ticket);
   };
 
   return (
@@ -349,18 +347,49 @@ export const ResearchPage: React.FC = () => {
                 </button>
               </div>
 
-              {formSubmitted ? (
-                <div className="py-8 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-secondary-container text-secondary flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+              {submittedTicket ? (
+                <div className="py-6 text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+                    <CheckCircle2 className="w-7 h-7 text-emerald-600" />
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-on-surface">
-                    Concept Note Transmitted
-                  </h4>
-                  <p className="text-xs text-on-surface-variant max-w-sm mx-auto">
-                    Your joint research inquiry has been logged with the Directorate of Research. Reference
-                    ticket: <strong>TCECEED-RND-{Math.floor(1000 + Math.random() * 9000)}</strong>
+                  <div>
+                    <h4 className="font-heading font-bold text-lg text-slate-800">
+                      Concept Note Successfully Filed
+                    </h4>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Directorate of Research &bull; Federal Polytechnic Nasarawa
+                    </p>
+                  </div>
+                  <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-xs inline-block">
+                    <span className="text-slate-500 block text-[10px] uppercase font-bold">Research Reference Ticket</span>
+                    <strong className="font-mono text-emerald-700 font-bold text-sm">{submittedTicket}</strong>
+                  </div>
+                  <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
+                    Our technical stream coordinators will review your project brief and reply with proposal guidelines within 3–5 business days.
                   </p>
+                  <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+                    <a
+                      href={`https://wa.me/2348036363090?text=${encodeURIComponent(
+                        `Hello Research Directorate, I have submitted a Joint Research Concept Note on the portal (Ticket: ${submittedTicket}).`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold border border-emerald-200 transition-colors shadow-2xs"
+                    >
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                      <span>Notify Directorate on WhatsApp</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmittedTicket(null);
+                        setConceptNoteModalOpen(false);
+                      }}
+                      className="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
+                    >
+                      Close Window
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleConceptSubmit} className="py-4 space-y-4 text-xs">

@@ -13,11 +13,13 @@ import {
   Navigation,
   Compass,
   FileCheck,
+  ExternalLink,
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { TypewriterText } from '../components/TypewriterText';
 import { SEOHead } from '../components/SEOHead';
+import { WhatsAppIcon } from '../components/WhatsAppWidget';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -200,30 +202,68 @@ export const ContactPage: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 rounded-2xl bg-surface-container-low border border-secondary/30 text-center space-y-3"
+                  className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-4"
                 >
-                  <div className="w-14 h-14 rounded-full bg-secondary text-white flex items-center justify-center mx-auto shadow-md">
-                    <CheckCircle2 className="w-7 h-7" />
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-600" />
                   </div>
-                  <h3 className="font-heading font-extrabold text-xl text-primary">
-                    Enquiry Logged in Registry
-                  </h3>
-                  <p className="text-xs sm:text-sm text-on-surface-variant max-w-sm mx-auto">
-                    Your request has been filed. Official Reference Ticket:{' '}
-                    <strong>{ticketId}</strong>
+                  <div className="text-center">
+                    <h3 className="font-heading font-extrabold text-xl text-[#064e3b]">
+                      Enquiry Logged in Official Registry
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-1">
+                      Tertiary Education Trust Fund (TETFund) Centre of Excellence Secretariat
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-2">
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                      <span className="text-slate-500">Official Tracking Ticket:</span>
+                      <strong className="font-mono text-emerald-700 font-bold text-sm">{ticketId}</strong>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Submitted By:</span>
+                      <strong className="text-slate-800">{formData.fullName}</strong>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Institutional Email:</span>
+                      <span className="text-slate-800">{formData.email}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Domain of Inquiry:</span>
+                      <span className="text-emerald-800 font-semibold uppercase text-[10px] bg-emerald-100/70 px-2 py-0.5 rounded">
+                        {formData.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-slate-600 text-center leading-relaxed">
+                    A duty officer at the Directorate of Research &amp; Commercialization will review and respond within 24–48 business hours.
                   </p>
-                  <p className="text-xs text-outline">
-                    A duty officer will review and reply within 24–48 business hours.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setTicketId(null);
-                      setFormData({ fullName: '', email: '', organization: '', category: 'research', message: '' });
-                    }}
-                    className="mt-2 px-5 py-2.5 rounded-lg bg-primary text-white text-xs font-heading font-semibold hover:bg-primary-dark"
-                  >
-                    Submit New Request
-                  </button>
+
+                  <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+                    <a
+                      href={`https://wa.me/2348036363090?text=${encodeURIComponent(
+                        `Hello Secretariat, I have logged an official enquiry on the portal (Ticket: ${ticketId}) regarding ${formData.category}. Candidate/Organization: ${formData.organization}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold border border-emerald-200 transition-colors shadow-2xs"
+                    >
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                      <span>Forward to Secretariat on WhatsApp</span>
+                    </a>
+
+                    <button
+                      onClick={() => {
+                        setTicketId(null);
+                        setFormData({ fullName: '', email: '', organization: '', category: 'research', message: '' });
+                      }}
+                      className="px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors"
+                    >
+                      Submit Another Enquiry
+                    </button>
+                  </div>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">

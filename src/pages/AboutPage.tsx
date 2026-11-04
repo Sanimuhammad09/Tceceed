@@ -27,6 +27,24 @@ import { PORTAL_LOGOS } from '../data/portalData';
 
 export const AboutPage: React.FC = () => {
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadComplete, setDownloadComplete] = useState(false);
+
+  const handleStartDownload = () => {
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+      setDownloadComplete(true);
+    }, 1200);
+  };
+
+  const handleCloseModal = () => {
+    setDownloadModalOpen(false);
+    setTimeout(() => {
+      setDownloadComplete(false);
+      setIsDownloading(false);
+    }, 300);
+  };
 
   return (
     <div className="w-full flex flex-col pt-4">
@@ -547,43 +565,76 @@ export const AboutPage: React.FC = () => {
                   </span>
                 </div>
                 <button
-                  onClick={() => setDownloadModalOpen(false)}
+                  onClick={handleCloseModal}
                   className="p-1 rounded-lg text-outline hover:text-on-surface"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="py-4 space-y-3 text-xs text-on-surface-variant">
-                <p>
-                  The official TCECEED Factsheet provides executive statistics, grant governance
-                  codes, laboratory inventory, and training schedules.
-                </p>
-                <div className="p-3 rounded-lg bg-surface-container-low space-y-1">
-                  <p><strong>Document ID:</strong> TCECEED-FS-2025-V2</p>
-                  <p><strong>Issued By:</strong> Secretariat Directorate, Federal Poly Nasarawa</p>
-                  <p><strong>File Size:</strong> 2.4 MB &bull; PDF Format</p>
+              {downloadComplete ? (
+                <div className="py-6 text-center space-y-3">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-600" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base text-slate-800">
+                    Factsheet Download Ready
+                  </h4>
+                  <p className="text-xs text-slate-600 max-w-xs mx-auto">
+                    Document <strong>TCECEED-FS-2025-V2.pdf</strong> has been generated from the institutional archive.
+                  </p>
+                  <div className="pt-2">
+                    <button
+                      onClick={handleCloseModal}
+                      className="px-5 py-2.5 rounded-lg bg-[#0b5738] text-white text-xs font-heading font-semibold hover:bg-emerald-800 transition-colors"
+                    >
+                      Done &bull; Close Window
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="py-4 space-y-3 text-xs text-on-surface-variant">
+                    <p>
+                      The official TCECEED Factsheet provides executive statistics, grant governance
+                      codes, laboratory inventory, and training schedules.
+                    </p>
+                    <div className="p-3 rounded-lg bg-surface-container-low space-y-1">
+                      <p><strong>Document ID:</strong> TCECEED-FS-2025-V2</p>
+                      <p><strong>Issued By:</strong> Secretariat Directorate, Federal Poly Nasarawa</p>
+                      <p><strong>File Size:</strong> 2.4 MB &bull; PDF Format</p>
+                    </div>
+                  </div>
 
-              <div className="pt-2 flex items-center justify-end gap-3">
-                <button
-                  onClick={() => setDownloadModalOpen(false)}
-                  className="px-4 py-2 text-xs font-semibold text-on-surface-variant hover:text-on-surface"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={() => {
-                    alert('Factsheet download initiated. Reference: TCECEED-FS-2025');
-                    setDownloadModalOpen(false);
-                  }}
-                  className="px-5 py-2.5 rounded-lg bg-primary text-white text-xs font-heading font-semibold hover:bg-primary-dark transition-colors flex items-center gap-1.5"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Start Download</span>
-                </button>
-              </div>
+                  <div className="pt-2 flex items-center justify-end gap-3">
+                    <button
+                      type="button"
+                      onClick={handleCloseModal}
+                      className="px-4 py-2 text-xs font-semibold text-on-surface-variant hover:text-on-surface"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isDownloading}
+                      onClick={handleStartDownload}
+                      className="px-5 py-2.5 rounded-lg bg-primary text-white text-xs font-heading font-semibold hover:bg-primary-dark transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-70"
+                    >
+                      {isDownloading ? (
+                        <>
+                          <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                          <span>Preparing PDF...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-3.5 h-3.5" />
+                          <span>Start Download</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}

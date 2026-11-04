@@ -121,9 +121,32 @@ export const ManagementPage: React.FC = () => {
               From federal fiduciary trustees down to community technical apprentices, our hierarchy ensures
               uncompromising accountability, rapid decision-making, and technical excellence.
             </p>
+
+            {/* Interactive Tier Filter Controls */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+              {[
+                { id: 0, label: 'Full Structure (All 3 Tiers)' },
+                { id: 1, label: 'Tier 1: Governing Councils' },
+                { id: 2, label: 'Tier 2: Executive Directorate' },
+                { id: 3, label: 'Tier 3: Ecosystem Cohorts' },
+              ].map((tier) => (
+                <button
+                  key={tier.id}
+                  onClick={() => setSelectedTier(tier.id)}
+                  className={`px-4 py-2 rounded-xl text-xs font-heading font-semibold transition-all ${
+                    selectedTier === tier.id
+                      ? 'bg-[#0b5738] text-white shadow-md'
+                      : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  {tier.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* TIER 1: GOVERNING COUNCILS & QUALITY BOARDS */}
+          {(selectedTier === 0 || selectedTier === 1) && (
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <span className="px-3 py-1 rounded-md bg-primary text-white font-heading font-bold text-xs uppercase">
@@ -208,8 +231,10 @@ export const ManagementPage: React.FC = () => {
               </ScrollReveal>
             </div>
           </div>
+          )}
 
           {/* Accountability Divider Line */}
+          {selectedTier === 0 && (
           <div className="flex justify-center my-4">
             <div className="flex flex-col items-center">
               <div className="w-0.5 h-6 bg-outline-variant" />
@@ -220,8 +245,10 @@ export const ManagementPage: React.FC = () => {
               <div className="w-0.5 h-6 bg-outline-variant" />
             </div>
           </div>
+          )}
 
           {/* TIER 2: EXECUTIVE MANAGEMENT - THE CENTER DIRECTORATE */}
+          {(selectedTier === 0 || selectedTier === 2) && (
           <div className="space-y-6">
             <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md border-2 border-primary/20 text-center">
               <span className="px-3 py-1 rounded bg-primary text-white font-heading font-bold text-xs uppercase mb-2 inline-block">
@@ -404,8 +431,10 @@ export const ManagementPage: React.FC = () => {
               </div>
             </div>
           </div>
+          )}
 
           {/* TIER 3: STAKEHOLDER COHORTS */}
+          {(selectedTier === 0 || selectedTier === 3) && (
           <div className="space-y-6 pt-4">
             <div className="flex items-center gap-3">
               <span className="px-3 py-1 rounded-md bg-outline text-white font-heading font-bold text-xs uppercase">
@@ -462,6 +491,7 @@ export const ManagementPage: React.FC = () => {
               </div>
             </div>
           </div>
+          )}
         </div>
       </section>
 

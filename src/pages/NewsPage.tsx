@@ -13,11 +13,14 @@ import {
   Tag,
   BookOpen,
   Filter,
+  Printer,
+  CheckCircle2,
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { TypewriterText } from '../components/TypewriterText';
 import { SEOHead } from '../components/SEOHead';
+import { WhatsAppIcon } from '../components/WhatsAppWidget';
 import { NEWS_DISPATCHES, NewsArticle } from '../data/portalData';
 
 export const NewsPage: React.FC = () => {
@@ -25,6 +28,7 @@ export const NewsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState<string>('all');
   const [readingArticle, setReadingArticle] = useState<NewsArticle | null>(null);
+  const [downloadedArticleId, setDownloadedArticleId] = useState<string | null>(null);
 
   const filteredArticles = NEWS_DISPATCHES.filter((article) => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
@@ -384,20 +388,58 @@ export const NewsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-surface-container flex items-center justify-between">
-                <button
-                  onClick={() => {
-                    alert(`Starting download for article: ${readingArticle.title}`);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-semibold text-primary"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Publication PDF</span>
-                </button>
+              <div className="mt-8 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setDownloadedArticleId(readingArticle.id);
+                      setTimeout(() => setDownloadedArticleId(null), 3000);
+                    }}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all ${
+                      downloadedArticleId === readingArticle.id
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+                    }`}
+                  >
+                    {downloadedArticleId === readingArticle.id ? (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>PDF Archiving Started</span>
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Download PDF</span>
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(
+                      `TCECEED Clean Energy Publication: ${readingArticle.title} - Read more: https://tceceed.edu.ng/news`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold border border-emerald-200 transition-colors"
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>Share on WhatsApp</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
+                    title="Print this dispatch"
+                  >
+                    <Printer className="w-3.5 h-3.5" />
+                    <span>Print</span>
+                  </button>
+                </div>
 
                 <button
                   onClick={() => setReadingArticle(null)}
-                  className="px-5 py-2 rounded-lg bg-primary text-white text-xs font-heading font-semibold hover:bg-primary-dark"
+                  className="px-5 py-2 rounded-lg bg-[#0b5738] text-white text-xs font-heading font-semibold hover:bg-emerald-800 transition-colors"
                 >
                   Close Article
                 </button>

@@ -22,6 +22,10 @@ import { ContactPage } from '../pages/ContactPage';
 const RootComponent: React.FC = () => {
   const location = useLocation();
 
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen flex flex-col bg-surface text-on-surface">
       <Header />

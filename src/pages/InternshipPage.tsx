@@ -16,12 +16,16 @@ import {
   Award,
   Users,
   Compass,
+  Printer,
+  ExternalLink,
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { AnimatedCounter } from '../components/AnimatedCounter';
 import { TypewriterText } from '../components/TypewriterText';
 import { SEOHead } from '../components/SEOHead';
+import { WhatsAppIcon } from '../components/WhatsAppWidget';
+import { PORTAL_LOGOS } from '../data/portalData';
 
 export const InternshipPage: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<'A' | 'B'>('B');
@@ -392,30 +396,103 @@ export const InternshipPage: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-8 rounded-2xl bg-surface-container-low border border-secondary/30 text-center space-y-4"
+                className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-xl space-y-5"
               >
-                <div className="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center mx-auto shadow-md">
-                  <CheckCircle2 className="w-8 h-8" />
+                {/* Header of Slip */}
+                <div className="flex flex-col sm:flex-row items-center justify-between pb-4 border-b border-slate-100 gap-4 text-center sm:text-left">
+                  <div className="flex items-center gap-3">
+                    <img src={PORTAL_LOGOS.logo3.src} alt="TCECEED" className="h-10 w-auto" />
+                    <div>
+                      <h4 className="font-heading font-extrabold text-sm sm:text-base text-[#064e3b]">
+                        TCECEED Admissions Secretariat
+                      </h4>
+                      <p className="text-[11px] text-slate-500">
+                        Official Candidate Registration &bull; Federal Polytechnic Nasarawa
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Candidate Verified</span>
+                  </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-primary">
-                  Application Successfully Registered!
-                </h3>
-                <p className="text-xs sm:text-sm text-on-surface-variant max-w-md mx-auto">
-                  Thank you, <strong>{formData.fullName}</strong>. Your application for{' '}
-                  <strong>Track {selectedTrack}</strong> has been logged into the TCECEED Secretariat
-                  Database.
-                </p>
-                <div className="p-4 bg-white rounded-xl border border-surface-container inline-block text-xs font-mono font-bold text-primary">
-                  Reference Ticket: {submittedTicket}
+
+                {/* Candidate Particulars Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Candidate Name</span>
+                    <strong className="text-slate-900 text-sm">{formData.fullName || 'Registered Applicant'}</strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Admissions Ticket</span>
+                    <strong className="font-mono text-emerald-700 font-bold">{submittedTicket}</strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Enrolled Track</span>
+                    <strong className="text-slate-900">
+                      {selectedTrack === 'A' ? 'Track A (Fellows)' : 'Track B (6-Month Cohort)'}
+                    </strong>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Discipline</span>
+                    <span className="text-slate-700">{formData.discipline}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">State of Origin</span>
+                    <span className="text-slate-700">{formData.stateOfOrigin}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] uppercase font-bold">Contact Email</span>
+                    <span className="text-slate-700">{formData.email}</span>
+                  </div>
                 </div>
-                <p className="text-xs text-outline">
-                  A verification email has been dispatched to <strong>{formData.email}</strong>. Shortlisted
-                  candidates will be contacted for physical laboratory aptitude testing.
-                </p>
-                <div className="pt-2">
+
+                <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200/60 text-xs text-emerald-900 leading-relaxed">
+                  Your registration is securely recorded in the TETFund institutional portal. A screening officer will schedule your hands-on laboratory aptitude interview via email and phone.
+                </div>
+
+                {/* Slip Actions */}
+                <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => window.print()}
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold transition-colors shadow-2xs"
+                    >
+                      <Printer className="w-3.5 h-3.5" />
+                      <span>Print Acknowledgment Slip</span>
+                    </button>
+
+                    <a
+                      href={`https://wa.me/2348033972612?text=${encodeURIComponent(
+                        `Hello Admissions Desk, I have submitted my TCECEED Internship Application (Ticket: ${submittedTicket}) for candidate: ${formData.fullName}`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold border border-emerald-200 transition-colors shadow-2xs"
+                    >
+                      <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                      <span>Forward to Admissions Desk</span>
+                    </a>
+                  </div>
+
                   <button
-                    onClick={() => setSubmittedTicket(null)}
-                    className="px-5 py-2.5 rounded-lg bg-primary text-white text-xs font-heading font-semibold hover:bg-primary-dark transition-colors"
+                    type="button"
+                    onClick={() => {
+                      setSubmittedTicket(null);
+                      setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: '',
+                        stateOfOrigin: '',
+                        qualification: 'HND',
+                        discipline: 'Electrical/Electronic Engineering',
+                        institution: '',
+                        graduationYear: '2024',
+                        statement: '',
+                      });
+                    }}
+                    className="px-4 py-2 rounded-lg text-slate-600 hover:text-slate-900 text-xs font-semibold hover:bg-slate-100"
                   >
                     Submit Another Application
                   </button>
